@@ -6,9 +6,52 @@
 
 $(document).ready(function(){
 
+    var numeriRandom = [];
+    var numeriScelti = [];
+    var numero;
+    var check;
 
+    //riempio array di numeri random
+    for (var i = 0; i<5; i++){
+        numeriRandom[i] = randomNumber(1,100);
+    }
+    console.log(numeriRandom);
+    alert("Memorizza questi numeri: " + numeriRandom);
 
+    do {
+        if (numeriScelti.length < numeriRandom.length){
+            numero = parseInt(prompt('Prova a ricordare un numero...'));
+            check = checkElement(numeriRandom, numero);
+            if (check == true){
+                numeriScelti.push(numero);
+            } else if (checkElement(numeriScelti, numero) == true){
+                    alert('Numero già scelto! Riprova!');
+                    check = false;
+            } else {
+                alert('HAI PERSO!');
+            }
+        } else {
+                alert('Complimenti! hai vinto!');
+                check = false;
+        }
+    } while(check == true);
 
-
+    console.log(numeriScelti);
 
 });
+//** FUNZIONI **//
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function checkElement (array, element){
+    var check = false;
+    for(var i = 0; i < array.length; i++){
+        if (element == array[i]){
+            check = true;
+            return check;
+        }
+    }
+    return check;
+}
