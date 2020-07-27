@@ -10,6 +10,7 @@ $(document).ready(function(){
     var numeriScelti = [];
     var numero;
     var check;
+    var count=0;
 
     //riempio array di numeri random
     for (var i = 0; i<5; i++){
@@ -19,7 +20,6 @@ $(document).ready(function(){
     alert("Memorizza questi numeri: " + numeriRandom);
 
     do {
-        if (numeriScelti.length < numeriRandom.length){
             numero = parseInt(prompt('Prova a ricordare un numero...'));
             check = checkElement(numeriRandom, numero);
             if (check == true){
@@ -27,15 +27,17 @@ $(document).ready(function(){
             } else if (checkElement(numeriScelti, numero) == true){
                     alert('Numero già scelto! Riprova!');
                     check = false;
-            } else {
-                alert('HAI PERSO!');
-            }
-        } else {
-                alert('Complimenti! hai vinto!');
-                check = false;
-        }
-    } while(check == true);
+        //     } else {
+        //         alert('HAI PERSO!');
+        //     }
+        // } else {
+        //         alert('Complimenti! hai vinto!');
+        //         check = false;
+    }
+    count ++;
+} while(count < numeriRandom.length);
 
+    console.log('Hai indovinato: ' + (numeriScelti.length) + ' numeri');
     console.log(numeriScelti);
 
 });
