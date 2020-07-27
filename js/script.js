@@ -20,22 +20,16 @@ $(document).ready(function(){
     alert("Memorizza questi numeri: " + numeriRandom);
 
     do {
-            numero = parseInt(prompt('Prova a ricordare un numero...'));
-            check = checkElement(numeriRandom, numero);
-            if (check == true){
-                numeriScelti.push(numero);
-            } else if (checkElement(numeriScelti, numero) == true){
-                    alert('Numero già scelto! Riprova!');
-                    check = false;
-        //     } else {
-        //         alert('HAI PERSO!');
-        //     }
-        // } else {
-        //         alert('Complimenti! hai vinto!');
-        //         check = false;
-    }
-    count ++;
-} while(count < numeriRandom.length);
+        numero = parseInt(prompt('Prova a ricordare un numero...'));
+        check = checkElement(numeriRandom, numero);
+        if (checkElement(numeriScelti, numero) == true){
+            alert('Numero già scelto! Riprova!');
+            check = false;
+        } else if (check == true ){
+            numeriScelti.push(numero);
+        }
+        count ++;
+    } while(count < numeriRandom.length);
 
     console.log('Hai indovinato: ' + (numeriScelti.length) + ' numeri');
     console.log(numeriScelti);
