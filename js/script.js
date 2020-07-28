@@ -9,12 +9,17 @@ $(document).ready(function(){
     var numeriRandom = [];
     var numeriScelti = [];
     var numero;
-    var check;
+    var numeroRandom;
+    var checkRandom;
     var count = 0;
 
-    //riempio array di numeri random
-    for (var i = 0; i<5; i++){
-        numeriRandom[i] = randomNumber(1,100);
+    //utilizzando il ciclo while non ho bisogno
+    //di una variabile contatore.
+    while(numeriRandom.length < 5) {
+        numeroRandom = randomNumber(1,100);
+        if (checkElement(numeriRandom, numeroRandom) == false){
+            numeriRandom.push(randomNumber(1,100));
+        }
     }
 
     alert("Memorizza questi numeri: " + numeriRandom);
@@ -26,15 +31,15 @@ $(document).ready(function(){
             check = checkElement(numeriRandom, numero);
             if (checkElement(numeriScelti, numero) == true){
                 alert('Numero già scelto! Riprova!');
-                check = false;
             } else if (check == true ){
                 numeriScelti.push(numero);
+                count ++;
             }
-            count ++;
         } while(count < numeriRandom.length);
+
         //stampa a video il risultato
         document.getElementById('lista-numeri-random').innerHTML = "I numeri da memorizzare erano: " + numeriRandom;
-        document.getElementById('lista-numeri-scelti').innerHTML = "Tu hai indovinato " +numeriScelti.length + " numeri. Nello specifico: " + numeriScelti;
+        document.getElementById('lista-numeri-scelti').innerHTML = "Hai indovinato " +numeriScelti.length + " numeri: " + numeriScelti;
     }, 3000);
 });
 
