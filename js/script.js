@@ -34,6 +34,8 @@ $(document).ready(function(){
             } else if (check == true ){
                 numeriScelti.push(numero);
                 count ++;
+            } else {
+                count ++;
             }
         } while(count < numeriRandom.length);
 
